@@ -1,0 +1,51 @@
+def create_stack():
+    return []  # Initializes an empty stack
+
+def push(stack, book):
+    stack.append(book)  # Adds a book to the top of the stack
+    print(f"Pushed '{book}' to the stack.")
+
+def pop(stack):
+    if not is_empty(stack):
+        return stack.pop()  # Removes the top book from the stack
+    else:
+        print("Stack is empty.")
+        return None
+
+def is_empty(stack):
+    return len(stack) == 0
+
+def print_stack(stack):
+    print("Current Stack (top to bottom):")
+    for book in reversed(stack):  # Print from top to bottom
+        print(f"- {book}")
+    if is_empty(stack):
+        print("- The stack is empty.")
+
+# Example usage
+stack = create_stack()
+
+# Push books onto the stack
+push(stack, 'Book 1')
+push(stack, 'Book 2')
+push(stack, 'Book 3')
+
+# Print the current stack
+print_stack(stack)
+
+# Pop a book from the stack
+popped_book = pop(stack)
+print(f"Popped '{popped_book}' from the stack.")
+
+# Print the stack after a pop
+print_stack(stack)
+
+# Pop remaining books
+push(stack, 'Book 4')
+pop(stack)  # Popping Book 4
+pop(stack)  # Popping Book 2
+pop(stack)  # Popping Book 1
+
+# Attempt to pop from an empty stack
+pop(stack)  # This should print "Stack is empty."
+
