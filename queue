@@ -1,0 +1,50 @@
+def create_queue():
+    return []  # Initializes an empty queue
+
+def enqueue(queue, book):
+    queue.append(book)  # Adds a book to the end of the queue
+    print(f"Enqueued '{book}' to the queue.")
+
+def dequeue(queue):
+    if not is_empty(queue):
+        return queue.pop(0)  # Removes the first book from the queue
+    else:
+        print("Queue is empty.")
+        return None
+
+def is_empty(queue):
+    return len(queue) == 0
+
+def print_queue(queue):
+    print("Current Queue (front to back):")
+    for book in queue:  # Print from front to back
+        print(f"- {book}")
+    if is_empty(queue):
+        print("- The queue is empty.")
+
+# Example usage
+queue = create_queue()
+
+# Enqueue books into the queue
+enqueue(queue, 'Book 1')
+enqueue(queue, 'Book 2')
+enqueue(queue, 'Book 3')
+
+# Print the current queue
+print_queue(queue)
+
+# Dequeue a book from the queue
+dequeued_book = dequeue(queue)
+print(f"Dequeued '{dequeued_book}' from the queue.")
+
+# Print the queue after a dequeue
+print_queue(queue)
+
+# Enqueue another book and then dequeue all books to empty the queue
+enqueue(queue, 'Book 4')
+while not is_empty(queue):
+    dequeued_book = dequeue(queue)
+    print(f"Dequeued '{dequeued_book}' from the queue.")
+
+# Final state of the queue
+print_queue(queue)
